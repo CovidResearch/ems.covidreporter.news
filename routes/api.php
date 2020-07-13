@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\EMSLogController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,10 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('/ems/log/{region}', [EMSLogController::class, 'index']);
+    Route::get('/ems/log/{region}/{logId}', [EMSLogController::class, 'show']);
+    Route::post('/ems/log/{region}', [EMSLogController::class, 'store']);
 });
