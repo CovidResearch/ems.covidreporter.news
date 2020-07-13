@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+
+. "${ROOT}/.env"
+
+if [ -z "$PROJECT_NAME" ]; then
+    PROJECT_NAME=$(basename $ROOT | tr '[:upper:]' '[:lower:]' | sed "s/[^[:alpha:]-]//g")
+fi
+if [ -z "$NETWORK_NAME" ]; then
+    NETWORK_NAME=${PROJECT_NAME}_default
+fi
+
+docker run  -it \
+            --network "${NETWORK_NAME}" \
+            redis:3.2 redis-cli -h redis -a "${REDIS_PASSWORD}" "$@"
