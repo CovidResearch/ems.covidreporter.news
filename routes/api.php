@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\EMSLogController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Routing\Router;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+/** @var Router $router */
+$router->group(['middleware' => 'auth:api'], function (Router $router) {
+    $router->get('/user', function (Request $request) {
+        return $request->user();
+    });
 
-Route::group(['middleware' => 'auth:api'], function () {
-    Route::get('/ems/log/{region}', [EMSLogController::class, 'index']);
-    Route::get('/ems/log/{region}/{logId}', [EMSLogController::class, 'show']);
-    Route::post('/ems/log/{region}', [EMSLogController::class, 'store']);
+    $router->get('/ems/log/{region}', [EMSLogController::class, 'index']);
+    $router->get('/ems/log/{region}/{logId}', [EMSLogController::class, 'show']);
+    $router->post('/ems/log/{region}', [EMSLogController::class, 'store']);
 });

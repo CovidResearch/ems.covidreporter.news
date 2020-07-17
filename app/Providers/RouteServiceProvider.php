@@ -3,10 +3,18 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    /**
+     * The routing router interface.
+     *
+     * @var Router
+     */
+    protected $router;
+
     /**
      * This namespace is applied to your controller routes.
      *
@@ -38,15 +46,15 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define the routes for the application.
      *
+     * @param Router $router
      * @return void
      */
-    public function map()
+    public function map(Router $router)
     {
+        $this->router = $router;
+
         $this->mapApiRoutes();
-
         $this->mapWebRoutes();
-
-        //
     }
 
     /**
@@ -58,7 +66,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::middleware('web')
+        $this->router->middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
     }
