@@ -1,9 +1,20 @@
-<?php
+<?php declare(strict_types=1);
+
+/**
+ * This file is part of ems.covidreporter.news, a Covid Reporter News, LLC, Project.
+ *
+ * Copyright © 2020 Covid Reporter News, LLC.
+ * Author: Theodore R. Smith <theodore@phpexperts.pro>
+ *   GPG Fingerprint: 4BF8 2613 1C34 87AC D28F  2AD8 EB24 A91D D612 5690
+ *   https://www.phpexperts.pro/
+ *   https://github.com/PHPExpertsInc/Skeleton
+ *
+ * This file is licensed under the MIT License.
+ */
 
 use App\Models\User;
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -16,7 +27,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard'     => 'web',
         'passwords' => 'users',
     ],
 
@@ -39,14 +50,14 @@ return [
 
     'guards' => [
         'web' => [
-            'driver' => 'session',
+            'driver'   => 'session',
             'provider' => 'users',
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver'   => 'token',
             'provider' => 'users',
-            'hash' => false,
+            'hash'     => false,
         ],
     ],
 
@@ -70,7 +81,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => User::class,
+            'model'  => User::class,
         ],
 
         // 'users' => [
@@ -97,8 +108,8 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
+            'table'    => 'password_resets',
+            'expire'   => 60,
             'throttle' => 60,
         ],
     ],
@@ -115,5 +126,4 @@ return [
     */
 
     'password_timeout' => 10800,
-
 ];

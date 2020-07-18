@@ -12,5 +12,6 @@
 Homestead.json
 Homestead.yaml
 npm-debug.log
+.php_cs.cache
 yarn-error.log
 .env

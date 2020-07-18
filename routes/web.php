@@ -1,21 +1,22 @@
-<?php
+<?php declare(strict_types=1);
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+/**
+ * This file is part of ems.covidreporter.news, a Covid Reporter News, LLC, Project.
+ *
+ * Copyright © 2020 Covid Reporter News, LLC.
+ * Author: Theodore R. Smith <theodore@phpexperts.pro>
+ *   GPG Fingerprint: 4BF8 2613 1C34 87AC D28F  2AD8 EB24 A91D D612 5690
+ *   https://www.phpexperts.pro/
+ *   https://github.com/PHPExpertsInc/Skeleton
+ *
+ * This file is licensed under the MIT License.
+ */
 
 use App\Providers\RouteServiceProvider;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Auth;
 
-/** @var Router $router */
+/* @var Router $router */
 $router->get('/', function () {
     if (Auth::check()) {
         return redirect(RouteServiceProvider::HOME);
