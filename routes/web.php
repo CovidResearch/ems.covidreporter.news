@@ -11,11 +11,16 @@
 |
 */
 
+use App\Providers\RouteServiceProvider;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Auth;
 
 /** @var Router $router */
 $router->get('/', function () {
+    if (Auth::check()) {
+        return redirect(RouteServiceProvider::HOME);
+    }
+
     return view('welcome');
 });
 
@@ -36,4 +41,4 @@ $router->group(['prefix' => 'auth'], function (Router $router) {
     $router->post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 });
 
-$router->get('/home', 'HomeController@view')->name('home');
+$router->get('/dashboard', 'DashboardController@view')->name('dashboard');
