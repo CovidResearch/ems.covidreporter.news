@@ -17,8 +17,6 @@ services:
     volumes:
       - .:/var/www:delegated
       - ./docker/web:/etc/nginx/custom
-    ports:
-      - 80:80
 
 
 ###### CUSTOM EDITS START HERE ######
