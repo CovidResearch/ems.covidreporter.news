@@ -36,4 +36,4 @@ $router->group(['prefix' => 'auth'], function (Router $router) {
     $router->post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 });
 
-$router->get('/home', 'HomeController@index')->name('home');
+$router->get('/home', 'HomeController@view')->name('home');
