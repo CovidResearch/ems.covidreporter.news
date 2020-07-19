@@ -41,7 +41,8 @@ class VersionOnePointOh extends Migration
 
             $table->foreign('region_id')
                 ->references('id')
-                ->on('regions');
+                ->on('regions')
+                ->cascadeOnDelete();
         });
 
         Schema::create('ems_feeds', function (Blueprint $table) {
@@ -53,10 +54,11 @@ class VersionOnePointOh extends Migration
 
             $table->foreign('ems_id')
                 ->references('id')
-                ->on('ems');
+                ->on('ems')
+                ->cascadeOnDelete();
         });
 
-        Schema::create('ems_log', function (Blueprint $table) {
+        Schema::create('ems_logs', function (Blueprint $table) {
             $table->char('id', 22)->primary();
             $table->char('region_id', 22);
             $table->char('ems_id', 22);
@@ -68,11 +70,13 @@ class VersionOnePointOh extends Migration
 
             $table->foreign('region_id')
                 ->references('id')
-                ->on('regions');
+                ->on('regions')
+                ->cascadeOnDelete();
 
             $table->foreign('ems_id')
                 ->references('id')
-                ->on('ems');
+                ->on('ems')
+                ->cascadeOnDelete();
         });
     }
 
@@ -84,7 +88,7 @@ class VersionOnePointOh extends Migration
     public function down()
     {
         Schema::dropIfExists('ems_feeds');
-        Schema::dropIfExists('ems_log');
+        Schema::dropIfExists('ems_logs');
         Schema::dropIfExists('ems');
         Schema::dropIfExists('regions');
     }
