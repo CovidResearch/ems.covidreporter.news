@@ -55,7 +55,7 @@ return [
         ],
 
         'api' => [
-            'driver'   => 'token',
+            'driver'   => 'jwt',
             'provider' => 'users',
             'hash'     => false,
         ],
@@ -107,8 +107,8 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'users',
-            'table'    => 'password_resets',
+            'provider' => 'eloquent',
+            'model'    => App\Models\User::class,
             'expire'   => 60,
             'throttle' => 60,
         ],
@@ -124,6 +124,6 @@ return [
     | confirmation screen. By default, the timeout lasts for three hours.
     |
     */
-
-    'password_timeout' => 10800,
+    // 30 minutes
+    'password_timeout' => 1800,
 ];

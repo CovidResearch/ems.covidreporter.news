@@ -28,7 +28,7 @@ use Illuminate\Routing\Router;
 */
 
 /* @var Router $router */
-$router->group(['middleware' => 'auth:api'], function (Router $router) {
+$router->group(['middleware' => 'jwt-guardian:users'], function (Router $router) {
     $router->get('/user', function (Request $request) {
         return $request->user();
     });
