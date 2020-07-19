@@ -31,7 +31,9 @@ use PHPExperts\ConciseUuid\ConciseUuidModel;
  */
 class EMSLog extends ConciseUuidModel
 {
+    protected $table = 'ems_logs';
     protected $dateFormat = 'Y-m-d H:i:sO';
+    protected $guarded = ['created_at', 'updated_at'];
 
     public function region(): HasOne
     {

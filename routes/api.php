@@ -12,6 +12,7 @@
  * This file is licensed under the MIT License.
  */
 
+use App\Http\Controllers\EMSFeedController;
 use App\Http\Controllers\EMSLogController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
@@ -32,6 +33,8 @@ $router->group(['middleware' => 'jwt-guardian:users'], function (Router $router)
     $router->get('/user', function (Request $request) {
         return $request->user();
     });
+
+    $router->post('/ems/feeds', [EMSFeedController::class, 'store']);
 
     $router->get('/ems/log/{region}', [EMSLogController::class, 'index']);
     $router->get('/ems/log/{region}/{logId}', [EMSLogController::class, 'show']);

@@ -26,4 +26,6 @@ use PHPExperts\ConciseUuid\ConciseUuidModel;
 class Region extends ConciseUuidModel
 {
     protected $dateFormat = 'Y-m-d H:i:sO';
+
+    protected $guarded = ['created_at', 'updated_at'];
 }

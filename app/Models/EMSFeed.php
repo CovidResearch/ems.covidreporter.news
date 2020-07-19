@@ -28,10 +28,36 @@ use PHPExperts\ConciseUuid\ConciseUuidModel;
  */
 class EMSFeed extends ConciseUuidModel
 {
+    protected $table = 'ems_feeds';
     protected $dateFormat = 'Y-m-d H:i:sO';
+    protected $guarded = ['created_at', 'updated_at'];
 
     public function ems(): BelongsTo
     {
         return $this->belongsTo(EMS::class);
+    }
+
+    public static function deepCreate(array $params)
+    {
+        $region = Region::query()->firstOrCreate([
+            'name' => $params['region_name'],
+        ], [
+            'name' => $params['region_name'],
+        ]);
+
+        $ems = EMS::query()->firstOrCreate([
+            'region_id' => $region->id,
+            'name'      => $params['ems_name'],
+        ], [
+            'region_id' => $region->id,
+            'name'      => $params['ems_name'],
+        ]);
+
+        $emsFeed = self::query()->firstOrCreate([
+            'ems_id' => $ems->id,
+            'url'    => $params['url'],
+        ]);
+
+        return $emsFeed;
     }
 }
