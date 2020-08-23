@@ -27,8 +27,14 @@ use Illuminate\Routing\Router;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 /* @var Router $router */
+
+// We want the informational API routes to be 100% open & free.
+$router->get('/ems/feeds', [EMSFeedController::class, 'index']);
+$router->get('/ems/log/{region}', [EMSLogController::class, 'index']);
+$router->get('/ems/log/{region}/{logId}', [EMSLogController::class, 'show']);
+
+
 $router->group(['middleware' => 'jwt-guardian:users'], function (Router $router) {
     $router->get('/user', function (Request $request) {
         return $request->user();
@@ -36,7 +42,5 @@ $router->group(['middleware' => 'jwt-guardian:users'], function (Router $router)
 
     $router->post('/ems/feeds', [EMSFeedController::class, 'store']);
 
-    $router->get('/ems/log/{region}', [EMSLogController::class, 'index']);
-    $router->get('/ems/log/{region}/{logId}', [EMSLogController::class, 'show']);
     $router->post('/ems/log/{region}', [EMSLogController::class, 'store']);
 });

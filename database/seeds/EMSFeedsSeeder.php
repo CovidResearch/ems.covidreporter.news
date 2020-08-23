@@ -33,22 +33,22 @@ class EMSFeedsSeeder extends Seeder
             [
                 'region_name' => 'Houston, TX',
                 'ems_name'    => 'Houston Fire',
-                'url'         => 'https://www.broadcastify.com/listen/feed/2841',
+                'url'         => 'https://www.broadcastify.com/webPlayer/28416',
             ],
             [
                 'region_name' => 'Miami, FL',
                 'ems_name'    => 'Miami Fire',
-                'url'         => 'https://www.broadcastify.com/listen/feed/30508',
+                'url'         => 'https://www.broadcastify.com/webPlayer/30508',
             ],
             [
                 'region_name' => 'Los Angeles, CA',
                 'ems_name'    => 'Los Angeles City Fire and EMS North',
-                'url'         => 'https://www.broadcastify.com/listen/feed/18435',
+                'url'         => 'https://www.broadcastify.com/webPlayer/18435',
             ],
             [
                 'region_name' => 'Los Angeles, CA',
                 'ems_name'    => 'Los Angeles City Fire and EMS South',
-                'url'         => 'https://www.broadcastify.com/listen/feed/18556',
+                'url'         => 'https://www.broadcastify.com/webPlayer/18556',
             ],
         ];
 

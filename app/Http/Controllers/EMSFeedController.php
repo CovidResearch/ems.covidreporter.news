@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\EMS;
 use App\Models\EMSFeed;
+use App\Models\EMSFeedDetails;
 use App\Models\EMSLog;
 use App\Models\Region;
 use Illuminate\Http\JsonResponse;
@@ -14,7 +15,7 @@ class EMSFeedController extends Controller
     public function index()
     {
         return new JsonResponse(
-            EMSFeed::query()->paginate(10),
+            EMSFeedDetails::query()->paginate(10),
         );
     }
 
